@@ -1,0 +1,649 @@
+/*==============================================================
+  custom.css – Aretas Sirvydas CV svetaines stiliai (9 LD)
+  Failas itrauktas PO main.css, todel jo taisykles perraso sablono stilius.
+==============================================================*/
+
+/* Sriftai is Google Fonts (su lietuviskomis raidemis – latin-ext) */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap");
+
+/* Nauja spalvu ir sriftu palete (perraso main.css kintamuosius) */
+:root {
+  --default-font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --heading-font: "Space Grotesk", "IBM Plex Sans", sans-serif;
+  --nav-font: "Space Grotesk", sans-serif;
+
+  --background-color: #0d1519;
+  --default-color: #dbe7ec;
+  --heading-color: #ffffff;
+  --accent-color: #2dd4bf;      /* turkio spalva vietoj melynos */
+  --accent-dark: #0f766e;
+  --highlight-color: #f5b942;   /* gintaro spalva akcentams */
+  --surface-color: #15232a;
+  --contrast-color: #06201d;    /* tamsus tekstas ant sviesaus akcento */
+
+  --nav-hover-color: #2dd4bf;
+  --nav-dropdown-hover-color: #2dd4bf;
+
+  --radius-lg: 18px;
+  --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/*--------------------------------------------------------------
+  2. TIPOGRAFIJA
+--------------------------------------------------------------*/
+/* 2a. Sriftu seima */
+body {
+  font-family: var(--default-font);
+  font-size: 16.5px;
+}
+
+/* 2b. Antrastes h1–h6 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h6 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--highlight-color);
+}
+
+.section-title h2 {
+  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* geltonas bruksnys po skilties antraste */
+.section-title h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+}
+
+.hero .hero-content h1 .highlight {
+  color: var(--accent-color);
+}
+
+/* 2c. Pastraipos */
+p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #c9d6dc;
+  margin-bottom: 1.1rem;
+}
+
+.section-title p,
+.about .intro-content .lead {
+  font-style: italic;
+  color: #b7c7ce;
+}
+
+/*--------------------------------------------------------------
+  3. MYGTUKAI IR NUORODOS
+--------------------------------------------------------------*/
+/* 3a. Mygtukai */
+.hero .hero-actions .btn,
+.about .intro-content .cta-group .btn-ghost,
+.contact .contact-form .btn {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: 2px solid var(--accent-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.hero .hero-actions .btn.btn-primary,
+.contact .contact-form .btn {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 6px 0 var(--accent-dark);
+}
+
+.hero .hero-actions .btn.btn-outline,
+.about .intro-content .cta-group .btn-ghost {
+  background: transparent;
+  color: var(--accent-color);
+  box-shadow: 0 6px 0 rgba(45, 212, 191, 0.25);
+}
+
+/* :hover – mygtukas pakyla ir pasikeicia spalva */
+.hero .hero-actions .btn.btn-primary:hover,
+.contact .contact-form .btn:hover {
+  background: var(--highlight-color);
+  border-color: var(--highlight-color);
+  color: #241a02;
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #a8761a;
+}
+
+.hero .hero-actions .btn.btn-outline:hover,
+.about .intro-content .cta-group .btn-ghost:hover {
+  background: rgba(45, 212, 191, 0.12);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 rgba(45, 212, 191, 0.35);
+}
+
+/* :active – mygtukas „nuspaudziamas“ */
+.hero .hero-actions .btn:active,
+.about .intro-content .cta-group .btn-ghost:active,
+.contact .contact-form .btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--accent-dark);
+}
+
+/* 3b. Nuorodos */
+main a:not(.btn):not(.btn-ghost):not(.glightbox):not(.link-underline) {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: rgba(45, 212, 191, 0.4);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+main a:not(.btn):not(.btn-ghost):not(.glightbox):not(.link-underline):hover {
+  color: var(--highlight-color);
+  text-decoration-color: var(--highlight-color);
+}
+
+.footer .credits a {
+  color: var(--highlight-color);
+}
+
+.about .intro-content .cta-group .link-underline {
+  font-weight: 600;
+}
+
+/*--------------------------------------------------------------
+  4. ISDESTYMAS (margin, padding) IR TURINIO BLOKAI
+--------------------------------------------------------------*/
+/* 4a. Tarpai skiltyse Apie, Patirtis, Atlikti darbai */
+.about.section,
+.skills.section,
+.resume.section,
+.portfolio.section {
+  padding: 90px 0 100px;
+}
+
+.about .intro-content .headline {
+  margin: 0.75rem 0 1.75rem;
+}
+
+.about .intro-content .cta-group {
+  margin-top: 2.25rem;
+  gap: 1.5rem;
+}
+
+.resume .resume-item {
+  margin-bottom: 3.5rem;
+}
+
+.resume .resume-item .resume-content {
+  padding-left: 2rem;
+}
+
+.resume .resume-item article {
+  margin-bottom: 1.75rem;
+}
+
+.portfolio .portfolio-filters {
+  margin-bottom: 3rem;
+  gap: 12px;
+}
+
+.portfolio .isotope-container {
+  row-gap: 2.5rem;
+}
+
+.portfolio .portfolio-card .portfolio-info {
+  padding: 24px 26px 28px;
+}
+
+/* 4b. Turinio bloku isvaizda: kraštines, uzapvalinimai, seseliai */
+/* Pagrindinis */
+.hero .hero-image .image-wrapper img {
+  border-radius: 28px 28px 28px 6px;
+  border: 3px solid var(--accent-color);
+  box-shadow: 14px 14px 0 rgba(245, 185, 66, 0.35);
+}
+
+.hero .hero-image .floating-elements .floating-card {
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  border-radius: 12px;
+}
+
+/* Apie */
+.about .profile-figure .profile-photo {
+  border-radius: 50% 50% var(--radius-lg) var(--radius-lg);
+  border: 3px solid var(--accent-color);
+  box-shadow: var(--shadow-card), 0 0 0 10px rgba(45, 212, 191, 0.08);
+}
+
+.skills .skill-box {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-top: 4px solid var(--accent-color);
+  box-shadow: var(--shadow-card);
+}
+
+/* Patirtis – kiekvienas irasas tampa kortele */
+.resume .resume-item article {
+  background: var(--surface-color);
+  padding: 1.4rem 1.6rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 4px solid var(--highlight-color);
+  box-shadow: var(--shadow-card);
+}
+
+.resume .resume-item article::before {
+  left: -2.9rem;
+  top: 1.5rem;
+  background: var(--highlight-color);
+  border-color: var(--background-color);
+  box-shadow: 0 0 0 3px var(--highlight-color);
+}
+
+.resume .resume-item article h5 {
+  border-radius: 999px;
+  color: var(--highlight-color);
+  background: rgba(245, 185, 66, 0.12);
+}
+
+/* Atlikti darbai */
+.portfolio .portfolio-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  box-shadow: var(--shadow-card);
+}
+
+.portfolio .portfolio-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 18px 40px rgba(45, 212, 191, 0.18);
+}
+
+.portfolio .portfolio-card .portfolio-img {
+  border-bottom: 3px solid var(--accent-color);
+}
+
+.portfolio .portfolio-card .portfolio-info p {
+  color: var(--highlight-color);
+  margin-bottom: 6px;
+}
+
+.portfolio .portfolio-card .portfolio-info .portfolio-desc {
+  color: #c9d6dc;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Paslaugos ir Kontaktai */
+.services .service-item,
+.contact .info-box,
+.contact .contact-form {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  box-shadow: var(--shadow-card);
+}
+
+/*--------------------------------------------------------------
+  5. PASIRINKTI KOMPONENTAI
+--------------------------------------------------------------*/
+/* 5.1 Navigacijos juosta */
+.header {
+  background: rgba(10, 18, 22, 0.88) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(45, 212, 191, 0.25);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  padding: 10px 0;
+}
+
+@media (min-width: 1200px) {
+  .navmenu > ul > li {
+    padding: 8px 6px;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .navmenu > ul > li > a:before {
+    display: none;
+  }
+
+  .navmenu li:hover > a {
+    background: rgba(45, 212, 191, 0.12);
+    color: var(--accent-color);
+  }
+
+  .navmenu .active,
+  .navmenu .active:focus {
+    background: var(--accent-color);
+    color: var(--contrast-color) !important;
+  }
+}
+
+/* 5.2 Mygtukas „i virsu“ */
+.scroll-top {
+  width: 52px;
+  height: 52px;
+  right: 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent-color), var(--highlight-color));
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-top.active {
+  bottom: 22px;
+}
+
+.scroll-top i {
+  color: var(--contrast-color);
+  font-size: 28px;
+}
+
+.scroll-top:hover {
+  background: linear-gradient(135deg, var(--highlight-color), var(--accent-color));
+  transform: rotate(-8deg) scale(1.06);
+}
+
+/* 5.3 Progreso juostos (Apie ir Patirtis) */
+.skills .skill-box .progress,
+.resume .skill-item .progress {
+  height: 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.skills .skill-box .progress .progress-bar,
+.resume .skill-item .progress .progress-bar {
+  border-radius: 6px;
+  background: repeating-linear-gradient(-45deg,
+      var(--accent-color) 0 10px,
+      #24b5a3 10px 20px);
+  box-shadow: 0 0 12px rgba(45, 212, 191, 0.55);
+}
+
+.resume .skill-item .progress .progress-bar::after {
+  color: var(--highlight-color);
+}
+
+/*--------------------------------------------------------------
+  PAPILDOMA 1. SARASAI
+--------------------------------------------------------------*/
+.saraso-blokas {
+  height: 100%;
+  background: var(--surface-color);
+  padding: 2rem 2.2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  box-shadow: var(--shadow-card);
+}
+
+.saraso-blokas h3 {
+  margin-bottom: 1.5rem;
+}
+
+/* Nenumeruotas sarasas – zymeklis per ::before pseudo-elementa */
+.technologiju-sarasas {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.technologiju-sarasas > li {
+  position: relative;
+  padding: 0.45rem 0 0.45rem 2rem;
+  line-height: 1.6;
+}
+
+.technologiju-sarasas > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--accent-color);
+  transform: rotate(45deg);
+}
+
+/* Idetinis sarasas – kitokia spalva, zymeklis ir atitraukimas */
+.technologiju-sarasas ul {
+  list-style: none;
+  margin: 0.6rem 0 0.2rem;
+  padding: 0.6rem 0.9rem 0.6rem 1.4rem;
+  border-left: 3px dashed var(--highlight-color);
+  background: rgba(245, 185, 66, 0.07);
+  border-radius: 0 10px 10px 0;
+}
+
+.technologiju-sarasas ul li {
+  position: relative;
+  padding: 0.25rem 0 0.25rem 1.3rem;
+  font-size: 0.95rem;
+  color: #e9dcc0;
+}
+
+.technologiju-sarasas ul li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+}
+
+/* Numeruotas sarasas – CSS skaitikliai (counters) */
+.etapu-sarasas {
+  list-style: none;
+  counter-reset: etapas;
+  padding-left: 0;
+  margin: 0;
+}
+
+.etapu-sarasas li {
+  counter-increment: etapas;
+  position: relative;
+  padding: 0.55rem 0 0.55rem 3.2rem;
+  min-height: 2.6rem;
+  line-height: 1.6;
+}
+
+.etapu-sarasas li::before {
+  content: counter(etapas, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--contrast-color);
+  background: var(--accent-color);
+}
+
+/* linija, jungianti etapus */
+.etapu-sarasas li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 2.7rem;
+  bottom: -0.4rem;
+  width: 2px;
+  background: rgba(45, 212, 191, 0.35);
+}
+
+/*--------------------------------------------------------------
+  PAPILDOMA 2. LENTELE
+--------------------------------------------------------------*/
+.paslaugu-lentele {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  box-shadow: var(--shadow-card);
+  caption-side: bottom;
+}
+
+.paslaugu-lentele caption {
+  padding-top: 0.8rem;
+  text-align: center;
+  font-style: italic;
+  color: #9fb3bb;
+}
+
+/* c) vienodi vidiniai tarpai ir lygiavimas centre */
+.paslaugu-lentele th,
+.paslaugu-lentele td {
+  padding: 16px 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* a) antrastine eilute */
+.paslaugu-lentele thead th {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 3px solid var(--highlight-color);
+}
+
+.paslaugu-lentele tbody td {
+  color: var(--default-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background-color 0.2s ease;
+}
+
+/* b) „zebra“ stilius */
+.paslaugu-lentele tbody tr:nth-child(odd) td {
+  background: #132027;
+}
+
+.paslaugu-lentele tbody tr:nth-child(even) td {
+  background: #1b2c34;
+}
+
+/* b) eilutes :hover efektas */
+.paslaugu-lentele tbody tr:hover td {
+  background: rgba(45, 212, 191, 0.16);
+  color: #ffffff;
+}
+
+.paslaugu-lentele tbody td:last-child {
+  font-weight: 700;
+  color: var(--highlight-color);
+}
+
+/*--------------------------------------------------------------
+  Medijos blokai (8 LD papildoma) – kad tilptu i stulpeli
+--------------------------------------------------------------*/
+.medijos-blokas {
+  background: var(--surface-color);
+  padding: 1.6rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  box-shadow: var(--shadow-card);
+  height: 100%;
+}
+
+.medijos-blokas h3 {
+  margin-bottom: 1rem;
+}
+
+.medijos-blokas video,
+.medijos-blokas .ratio {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.medijos-blokas audio {
+  width: 100%;
+}
+
+.medijos-saltinis {
+  margin: 0.8rem 0 0;
+  font-size: 0.9rem;
+}
+
+.kainos.section,
+.procesas.section {
+  padding-top: 40px;
+}
+
+/* Kontaktu skiltyje sablonas naudoja --contrast-color tekstui ant tamsaus fono,
+   todel cia ji grazinama i balta, o mygtuko tekstas lieka tamsus (kontrastas) */
+.contact {
+  --contrast-color: #ffffff;
+}
+
+.contact .contact-form .btn,
+.contact .contact-form .btn:hover {
+  color: #06201d;
+}
+
+.contact .info-item .icon-box i {
+  color: var(--accent-color);
+}
+
+.contact .info-item:hover .icon-box i {
+  color: #06201d;
+}
